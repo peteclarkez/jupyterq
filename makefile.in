@@ -11,6 +11,9 @@ QLIBDIR=m64
 LDFLAGS=-bundle -undefined dynamic_lookup -L/usr/local/lib -Xlinker -rpath -Xlinker /usr/local/lib
 INCLUDES+=-I/usr/local/include
 endif
+ifeq (x$QHOME,x)
+$(error QHOME not defined)
+endif
 jupyterq: $(QLIBDIR)/jupyterq.so
 	
 $(QLIBDIR)/jupyterq.so: $(SDIR)/jupyterq.c $(IDIR)/k.h

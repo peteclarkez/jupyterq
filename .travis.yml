@@ -20,16 +20,16 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-  # Replace dep1 dep2 ... with your dependencies
   - pip install -r requirements.txt
 script:
+- cp makefile.in makefile
 - make jupyterq
 - echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
 - zip -r jupyterq_$TRAVIS_OS_NAME_$TRAVIS_BRANCH.zip jupyterq*.q install.sh README.md LICENSE kxpy kernelspec m64/jupyterq.so l64/jupyterq.so || true
 - echo "Packaged as jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip"
 - mkdir -p $HOME/q
 - export QHOME=$HOME/q
-- # can't test install.sh without q so use make install
+  # can't test install.sh without q so use make install
 - make install
 deploy:
   provider: releases
@@ -41,4 +41,5 @@ deploy:
     tags: true
 notifications:
   slack:
-    secure: xQ6yJFbr8xeUhsEZA6HQFaLSs1VHnjRMEZauiklpSkPUj6fkpWuPHv10cBkuJa8OPDo04rGmAh0zx1Dlb23yGJZjnB9W4M5PvDyVxhxtIt5h7e4Z7t3ISh1ik74VopXx9jSam3oKpTwGVaQPXyx78tH+Kut7h1hMEdl3uxiWFr/VNvMeS/imgiHF8BxZN4ak7I4XfSsaM7r/ab7mGNWcRuNAA1jbdtU0k1p4gjEK2bhtuGuWQVwgnYvLSUVs5CEsYUlLoZ0JzW3zQyR9KZW1G7Ih2C7t2iNaky4nPGE+gO6zSETAXkdr6BDwW4CgL9tI25uTxp6f0SXs5duDXZml3xRvtz4hxKUcvRVaxha5uwb2ezpJHIrdSDIybcg/EquYySz0FwtUVXgXO1qVh9sHlIhFuqxf2IYxayfcDRO1nI7Mj6smPy0GdKUf9XPdIJRW/hZ5a5854dwvyakik6OMnn0PUxOmHVu8H+LojOlUJ8RkdUKMzmPch4GDdWpBOWMIYWWXDpCDbibY4lFY2oTNITT0m+ov3y7L5dvsnDQHu0kFypBtly+B8xS/zL/l3IETU95oKjocm55UwV1vtYfASygvfLqUAB+3BxXv87vtipE9XDR7BQnafQVSA47dSP+dPaUXXMr5Qfug0x5B4/OdAd0/TwaIKvPgbn5fjAh6VYg=
+   secure: "RyR/+59M0DbfwEBlGUMtd/zwc5TvqArutkxuLiMXSTWe489DfuOBfrMGaTFhYsQu9mhHpCGXdHI/mRjAmSoXk4rXyNcGeoksWmFrs8GN1BYwcjeowx13D7WtSo3mZ2wSPvmMCQCi16mcGSn0VnKjOkHGFrVxsFrtF/6XW/w2rKeuaYDIA5xIl0erWBijNuH5pP691a3/zOUJbgouMc0cR5dxq3MJ+Wgzn/grVW2YiACBvACQaB08mzGiiIOeem2TkU0g2uQyzdUf3Pkc/mpNFgAGccYm9c71vV3tpoULZ0ZQATpjqQAdXl7wnjPqKFTQISwYDzf3uqF1002TTwOnrDvCy+8Pb2tEy/hhosv9ogpGN6zX0Voo5viIWkhu407qAIDs0h3hjo++3TAty/AJwwBk4rsOWJ5/D1yB9SJuS5Spu8aArwARR6U34cVVCQOZgQ7BG+p7qVLp3JSqCXNToZS6ARsz9D/4h2Ypw8tYrOXNI/NV4yJYvpN2cMSJt4lEyiEmb4QcDpNM0y8kK7L857V5I9IBeJ4uS2O7pqaQsPvUFOKzQIXc4P60J1kJ/RxvNKGsvihzZSQEEWOJfZOKkL5hQzgEeS6Tuok4KpLeXWs/H1p446OxywuterSi+cABZU7IcUB6xjFQ504GKAkpQvIgcCxIyqliD6SRcON2Wes="
+
