@@ -15,6 +15,8 @@ build_script:
     call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
 
     mkdir w64 
+  
+    echo %QHOME%
 
     cl /LD /Few64\jupyterq.dll src\lib\q.lib /DKXVER=3 /Isrc\include src\c\jupyterq.c
 
