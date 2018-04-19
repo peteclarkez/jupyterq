@@ -18,4 +18,9 @@ $(QLIBDIR)/jupyterq.so: $(SDIR)/jupyterq.c $(IDIR)/k.h
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -I$(IDIR)
 $(IDIR)/k.h:
 	curl -k https://raw.githubusercontent.com/KxSystems/kdb/master/c/c/k.h -o $(IDIR)/k.h
+install:
+	jupyter kernelspec install --user --name=qpk kernelspec
+	cp jupyterq*.q $QHOME
+	cp -r kxpy $QHOME
+	cp ${QLIBDIR}/jupyterq.so $QHOME/$(QLIBDIR)
 

@@ -27,6 +27,10 @@ script:
 - echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
 - zip -r jupyterq_$TRAVIS_OS_NAME_$TRAVIS_BRANCH.zip jupyterq*.q install.sh README.md LICENSE kxpy kernelspec m64/jupyterq.so l64/jupyterq.so || true
 - echo "Packaged as jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip"
+- mkdir -p $HOME/q
+- export QHOME=$HOME/q
+- # can't test install.sh without q so use make install
+- make install
 deploy:
   provider: releases
   api_key: "$GITHUB_APIKEY"
