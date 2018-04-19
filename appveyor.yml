@@ -9,6 +9,7 @@ build_script:
 - cmd: >-
     
     dir C:\Miniconda3\Scripts
+
     set PATH=C:\Miniconda\3;C:\Miniconda3\Scripts;%PATH%
 
     curl -fsSL -o k.h https://github.com/KxSystems/kdb/raw/master/c/c/k.h 
