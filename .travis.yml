@@ -1,0 +1,44 @@
+language: c
+os:
+- linux
+- osx
+compiler:
+- clang
+install:
+  # We do this conditionally because it saves us some downloading if the
+  # version is the same.
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    else
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+    fi
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+  - pip install -r requirements.txt
+script:
+- cp makefile.in makefile
+- make jupyterq
+- echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
+- zip -r jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip jupyterq*.q install.sh README.md LICENSE kxpy kernelspec importmatplotlib.q matplotlibexample.p kdb+Notebooks.ipynb m64/jupyterq.so l64/jupyterq.so || true
+- echo "Packaged as jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip"
+- mkdir -p $HOME/q
+- export QHOME=$HOME/q
+  # can't test install.sh without q so use make install
+- make install
+deploy:
+  provider: releases
+  api_key: "$GITHUB_APIKEY"
+  file_glob: true
+  file: jupyter*.zip
+  skip_cleanup: true
+  on:
+    tags: true
+notifications:
+  slack:
+   secure: "RyR/+59M0DbfwEBlGUMtd/zwc5TvqArutkxuLiMXSTWe489DfuOBfrMGaTFhYsQu9mhHpCGXdHI/mRjAmSoXk4rXyNcGeoksWmFrs8GN1BYwcjeowx13D7WtSo3mZ2wSPvmMCQCi16mcGSn0VnKjOkHGFrVxsFrtF/6XW/w2rKeuaYDIA5xIl0erWBijNuH5pP691a3/zOUJbgouMc0cR5dxq3MJ+Wgzn/grVW2YiACBvACQaB08mzGiiIOeem2TkU0g2uQyzdUf3Pkc/mpNFgAGccYm9c71vV3tpoULZ0ZQATpjqQAdXl7wnjPqKFTQISwYDzf3uqF1002TTwOnrDvCy+8Pb2tEy/hhosv9ogpGN6zX0Voo5viIWkhu407qAIDs0h3hjo++3TAty/AJwwBk4rsOWJ5/D1yB9SJuS5Spu8aArwARR6U34cVVCQOZgQ7BG+p7qVLp3JSqCXNToZS6ARsz9D/4h2Ypw8tYrOXNI/NV4yJYvpN2cMSJt4lEyiEmb4QcDpNM0y8kK7L857V5I9IBeJ4uS2O7pqaQsPvUFOKzQIXc4P60J1kJ/RxvNKGsvihzZSQEEWOJfZOKkL5hQzgEeS6Tuok4KpLeXWs/H1p446OxywuterSi+cABZU7IcUB6xjFQ504GKAkpQvIgcCxIyqliD6SRcON2Wes="
+
