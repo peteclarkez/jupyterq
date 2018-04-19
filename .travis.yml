@@ -11,12 +11,12 @@ script:
 - make jupyterq
 - echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
 - zip -r jupyterq_$TRAVIS_OS_NAME_$TRAVIS_BRANCH.zip jupyterq*.q install.sh README.md LICENSE kxpy kernelspec m64/jupyterq.so l64/jupyterq.so || true
-- echo "Packaged as embedPy_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip"
+- echo "Packaged as jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip"
 deploy:
   provider: releases
   api_key: "$GITHUB_APIKEY"
   file_glob: true
-  file: embedPy_*.zip
+  file: jupyter*.zip
   skip_cleanup: true
   on:
     tags: true
