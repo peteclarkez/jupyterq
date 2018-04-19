@@ -8,7 +8,8 @@ platform: x64
 build_script:
 - cmd: >-
     
-    dir C:\Miniconda3
+    dir C:\Miniconda3\Scripts
+    set PATH=C:\Miniconda\3;C:\Miniconda3\Scripts;%PATH%
 
     curl -fsSL -o k.h https://github.com/KxSystems/kdb/raw/master/c/c/k.h 
 
@@ -21,6 +22,8 @@ build_script:
     echo %QHOME%
 
     cl /LD /Few64\jupyterq.dll q.lib /DKXVER=3 /Isrc\include src\c\jupyterq.c
+
+    pip install -r requirements.txt
 
 after_build:
 - cmd: >-
