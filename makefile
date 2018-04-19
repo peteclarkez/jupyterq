@@ -20,7 +20,7 @@ $(IDIR)/k.h:
 	curl -k https://raw.githubusercontent.com/KxSystems/kdb/master/c/c/k.h -o $(IDIR)/k.h
 install:
 	jupyter kernelspec install --user --name=qpk kernelspec
-	cp jupyterq*.q $QHOME
-	cp -r kxpy $QHOME
-	cp ${QLIBDIR}/jupyterq.so $QHOME/$(QLIBDIR)
+	cp jupyterq*.q $(QHOME)
+	cp -r kxpy $(QHOME)
+	cp ${QLIBDIR}/jupyterq.so $(QHOME)/$(QLIBDIR)
 
