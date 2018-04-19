@@ -1,15 +1,13 @@
-language: c
+language: python
 os:
 - linux
 - osx
 compiler:
 - clang
 - gcc
-before_install:
-- sudo apt-get update
-- sudo apt-get install python3
-install:
- pip3 install -r requirements.txt
+python:
+ - "3.5"
+ 
 script:
 - make jupyterq
 - echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
