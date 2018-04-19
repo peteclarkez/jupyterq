@@ -11,23 +11,11 @@ QLIBDIR=m64
 LDFLAGS=-bundle -undefined dynamic_lookup -L/usr/local/lib -Xlinker -rpath -Xlinker /usr/local/lib
 INCLUDES+=-I/usr/local/include
 endif
-ifeq (x$QHOME,x)
-$(error QHOME not defined)
-endif
-jupyterq: lib/$(QLIBDIR)/jupyterq.so
+jupyterq: $(QLIBDIR)/jupyterq.so
 	
-lib/$(QLIBDIR)/jupyterq.so: $(SDIR)/jupyterq.c $(IDIR)/k.h
+$(QLIBDIR)/jupyterq.so: $(SDIR)/jupyterq.c $(IDIR)/k.h
+	mkdir -p $(QLIBDIR)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -I$(IDIR)
 $(IDIR)/k.h:
 	curl -k https://raw.githubusercontent.com/KxSystems/kdb/master/c/c/k.h -o $(IDIR)/k.h
-
-clean:
-	rm -f *.o
-cleanlibs: clean
-	rm -f *.so
-install: jupyterq
-	jupyter kernelspec install --user --name=qpk kernelspec
-	cp jupyterq_b64.q jupyterq_htmlgen.q jupyterq_kernel.q jupyterq_server.q jupyterq_help.q jupyterq_pyzmq.q $(QHOME)
-	cp -r kxpy $(QHOME)
-	cp lib/$(QLIBDIR)/jupyterq.so $(QHOME)/$(QLIBDIR)
 
