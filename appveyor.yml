@@ -7,6 +7,8 @@ skip_non_tags: false
 platform: x64
 build_script:
 - cmd: >-
+    
+    dir C:\Miniconda3
 
     curl -fsSL -o k.h https://github.com/KxSystems/kdb/raw/master/c/c/k.h 
 
