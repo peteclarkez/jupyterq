@@ -78,3 +78,4 @@ See the notebook kdb+Notebooks.ipynb for full interactive examples and explanati
 ## Documentation
 
 Documentation is available on the [jupyterq](https://code.kx.com/q/ml/jupyterq/) homepage.
+
