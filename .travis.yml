@@ -23,7 +23,6 @@ install:
   - conda info -a
   - pip install -r requirements.txt
 script:
-- cp makefile.in makefile
 - make jupyterq
 - echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
 - tar czf jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz jupyterq*.q install.sh README.md LICENSE kxpy kernelspec importmatplotlib.q matplotlibexample.p kdb+Notebooks.ipynb [ml]64/jupyterq.so
