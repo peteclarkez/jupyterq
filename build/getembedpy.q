@@ -5,6 +5,6 @@ download:{
  relurl:first exec browser_download_url from assets where name like{"*",x,"*"}(`m64`l64`w64!string`osx`linux`windows).z.o;
  $[count relurl;-1"downloading embedpy from ",relurl;'"release not found"];
  dl[1b]relurl;last ` vs hsym`$relurl}
-extract:{system$[x like"*.tgz";"tar -zxf";x like"*.zip";$[.z.o~`w64;"7z e";"unzip"];'"not zip or tgz"]," ",string x}
+extract:{system$[x like"*.tgz";"tar -zxf";x like"*.zip";$[.z.o~`w64;"7z x";"unzip"];'"not zip or tgz"]," ",string x}
 install:{{(` sv qhome,x)1:read1 x}each`p.k`p.q,`$string[.z.o],"/p.so"}
 getembedpy:{@[x;y;{exit 1}]}{install extract download x}
