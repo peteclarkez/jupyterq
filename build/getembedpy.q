@@ -7,4 +7,4 @@ download:{
  dl[1b]relurl;last ` vs hsym`$relurl}
 extract:{system$[x like"*.tgz";"tar -zxf";x like"*.zip";$[.z.o~`w64;"7z e";"unzip"];'"not zip or tgz"]," ",string x}
 install:{{(` sv qhome,x)1:read1 x}each`p.k`p.q,`$string[.z.o],"/p.so"}
-getembedpy:{@[x;y;exit 1]}{install extract download x}
+getembedpy:{@[x;y;{exit 1}]}{install extract download x}
