@@ -20,6 +20,7 @@ $(QLIBDIR)/jupyterq.so: $(SDIR)/jupyterq.c $(IDIR)/k.h
 	mkdir -p $(QLIBDIR)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -I$(IDIR)
 $(IDIR)/k.h:
+	mkdir -p $(IDIR)
 	curl -o $@ https://raw.githubusercontent.com/KxSystems/kdb/master/c/c/k.h
 install:
 	jupyter kernelspec install --user --name=qpk kernelspec

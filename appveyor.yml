@@ -12,16 +12,6 @@ build_script:
 
     set PATH=C:\Miniconda\3;C:\Miniconda3\Scripts;%PATH%
 
-    curl -fsSL -o k.h https://github.com/KxSystems/kdb/raw/master/c/c/k.h 
-
-    curl -fsSL -o q.lib https://github.com/KxSystems/kdb/raw/master/w64/q.lib
-
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-
-    mkdir w64 
-  
-    echo %QHOME%
-
     build\compile.bat
 
     pip install -r requirements.txt
