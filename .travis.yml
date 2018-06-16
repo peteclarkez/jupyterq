@@ -28,7 +28,7 @@ install:
   - echo -n $QLIC_KC |base64 --decode > q/kc.lic
   # grab latest embedpy
   - mkdir embedpy && cd embedpy
-  - echo 'getembedpy"latest"' | q build/getembedpy.q -q
+  - echo 'getembedpy"latest"' | q ../build/getembedpy.q -q
   - cd ..
   - echo 'p)print("python works")' | q -q
   - pip install -r requirements.txt
