@@ -29,7 +29,6 @@ install:
   - mkdir embedpy && cd embedpy
   - echo 'getembedpy"latest"' | q ../build/getembedpy.q -q
   - cd ..
-  - echo 'p)print("python works")' | q -q
   - pip install -r requirements.txt
 
 script:
@@ -37,8 +36,10 @@ script:
 - echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
 - tar czf jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz jupyterq*.q install.sh README.md LICENSE kxpy kernelspec examples kdb+Notebooks.ipynb [ml]64/jupyterq.so
 - echo "Packaged as jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz"
-  # can't test install.sh without q so use make install
-- make -f build/makefile install
+# install and test
+- ./install.sh
+- tests/test.sh
+
 deploy:
   provider: releases
   api_key: "$GITHUB_APIKEY"
