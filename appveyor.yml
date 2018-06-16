@@ -22,7 +22,7 @@ build_script:
   
     echo %QHOME%
 
-    cl /LD /Few64\jupyterq.dll q.lib /DKXVER=3 /Isrc\include src\c\jupyterq.c
+    build\compile.bat
 
     pip install -r requirements.txt
 
