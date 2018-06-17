@@ -37,7 +37,7 @@ script:
 - tar czf jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz jupyterq*.q install.sh README.md LICENSE kxpy kernelspec examples kdb+Notebooks.ipynb [ml]64/jupyterq.so
 - echo "Packaged as jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz"
 # install and test
-- if [[ "x$QLIC_KC" != " x]]; then
+- if [[ "x$QLIC_KC" != "x" ]]; then
     ./install.sh;
     tests/test.sh;
   fi
