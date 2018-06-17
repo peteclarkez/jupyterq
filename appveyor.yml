@@ -16,11 +16,11 @@ build_script:
 
     mkdir embedpy && cd embedpy && echo getembedpy"latest" | q ..\build\getembedpy.q -q && cd ..
 
-    pip install -r requirements.txt
-
     python -c "import sys;print(sys.version)"
 
     python3 -c "import sys;print(sys.version)"
+
+    pip install -r requirements.txt
 
     echo p)print('embedpy runs') | q -q
 
