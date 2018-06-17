@@ -1,4 +1,8 @@
+echo compiling
+
 build\compile.bat || goto :error
+
+echo here
 
 if not defined QLIC_KC (
  goto :nokdb
