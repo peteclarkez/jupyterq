@@ -20,6 +20,8 @@ build_script:
 
     python -c "import sys;print(sys.version)"
 
+    python3 -c "import sys;print(sys.version)"
+
     echo p)print('embedpy runs') | q -q
 
     install.bat
