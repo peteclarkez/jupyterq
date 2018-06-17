@@ -1,5 +1,6 @@
 qhome:hsym`$$[not count u:getenv`QHOME;'"QHOME not defined";u];
 \c 23 1000
+0N!count[getenv`GH_APIREAD]#"*"
 dl:{[s;url]0N!$[s;;`/:]system"curl -u ",getenv[`GH_APIREAD]," -s -L ",(0N!url),$[s;" -J -O";""]}
 download:{
  assets:0N!.j.k[dl[0b]"https://api.github.com/repos/KxSystems/embedPy/releases/",$[not[count x]|x~"latest";"latest";"tags/",x]]`assets;
