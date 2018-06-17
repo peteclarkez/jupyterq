@@ -8,13 +8,11 @@ platform: x64
 build_script:
 - cmd: >-
     
-    dir C:\Miniconda3\Scripts
-
-    set PATH=C:\Miniconda\3;C:\Miniconda3\Scripts;%PATH%
-
     build\compile.bat
 
     build\getkdb.bat
+
+    set PATH=C:\Miniconda3;C:\Miniconda3\Scripts;%PATH%
 
     mkdir embedpy && cd embedpy && echo getembedpy"latest" | q ..\build\getembedpy.q -q && cd ..
 
