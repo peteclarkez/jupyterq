@@ -18,7 +18,7 @@ build_script:
 
     python -c "import sys;print(sys.version)"
 
-    python3 -c "import sys;print(sys.version)"
+    python -c "print('/python'.join([__import__('sysconfig').get_config_var(v)for v in['BINDIR','VERSION']])+'.dll');print('');print(__import__('sys').prefix);"2>nul
 
     pip install -r requirements.txt
 
