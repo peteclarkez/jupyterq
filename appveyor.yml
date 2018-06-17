@@ -22,6 +22,8 @@ build_script:
 
     python -c "print('/python'.join([__import__('sysconfig').get_config_var(v)for v in['BINDIR','VERSION']])+'.dll');print('');print(__import__('sys').prefix);"2>nul
 
+    conda list python
+
     pip install -r requirements.txt
 
     echo p)print('embedpy runs') | q -q
