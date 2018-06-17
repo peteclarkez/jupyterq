@@ -1,10 +1,10 @@
-@echo OFF
 build\compile.bat || goto :error
 
 if not defined QLIC_KC (
  goto :nokdb
 )
 
+@echo OFF
 build\getkdb.bat || goto :error
 set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%PATH%
 mkdir embedpy 
@@ -20,4 +20,5 @@ echo failed with error %errorLevel%
 exit /b %errorLevel%
 
 :nokdb
+echo no kdb
 exit /b 0
