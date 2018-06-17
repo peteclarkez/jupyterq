@@ -26,9 +26,9 @@ install:
   - cp -r $(conda info --base)/q q && export QHOME=$(pwd)/q && export PATH=$QHOME/$QLIBDIR:$PATH
   # grab latest embedpy
   - if [[ "x$QLIC_KC" != "x" ]]; then
-      echo -n $QLIC_KC |base64 --decode > q/kc.lic
-      mkdir embedpy && cd embedpy && echo 'getembedpy"latest"' | q ../build/getembedpy.q -q && cd ..
-      pip install -r requirements.txt
+      echo -n $QLIC_KC |base64 --decode > q/kc.lic;
+      mkdir embedpy && cd embedpy && echo 'getembedpy"latest"' | q ../build/getembedpy.q -q && cd ..;
+      pip install -r requirements.txt;
     fi
 
 script:
@@ -38,8 +38,8 @@ script:
 - echo "Packaged as jupyterq_$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz"
 # install and test
 - if [[ "x$QLIC_KC" != " x]]; then
-    ./install.sh
-    tests/test.sh
+    ./install.sh;
+    tests/test.sh;
   fi
 
 deploy:
