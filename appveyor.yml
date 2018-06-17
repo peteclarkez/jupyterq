@@ -20,6 +20,8 @@ build_script:
 
     pip install -r requirements.txt
 
+    echo p)print('embedpy runs') | q -q
+
     install.bat
 
     tests/test.bat
