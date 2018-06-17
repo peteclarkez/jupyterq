@@ -8,23 +8,9 @@ platform: x64
 build_script:
 - cmd: >-
 
-    echo APPVEYOR_PULL_REQUEST_NUMBER %APPVEYOR_PULL_REQUEST_NUMBER%
+    build\buildscript.bat
 
-    build\compile.bat
-
-    build\getkdb.bat
-
-    set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%PATH%
-
-    mkdir embedpy && cd embedpy && echo getembedpy"latest" | q ..\build\getembedpy.q -q && cd ..
-
-    echo p)print('embedpy runs') | q -q
-
-    pip install -r requirements.txt
-
-    install.bat
-
-    tests/test.bat
+    tests\test.bat
 
 after_build:
 - cmd: >-
