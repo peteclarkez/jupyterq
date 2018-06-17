@@ -16,7 +16,13 @@ build_script:
 
     build\getkdb.bat
 
+    mkdir embedpy && cd embedpy && echo getembedpy"latest" | q ..\build\getembedpy.q -q && cd ..
+
     pip install -r requirements.txt
+
+    install.bat
+
+    tests/test.bat
 
 after_build:
 - cmd: >-
