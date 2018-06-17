@@ -8,8 +8,6 @@ platform: x64
 build_script:
 - cmd: >-
 
-    dir C:\Miniconda3
-    
     build\compile.bat
 
     build\getkdb.bat
@@ -18,15 +16,9 @@ build_script:
 
     mkdir embedpy && cd embedpy && echo getembedpy"latest" | q ..\build\getembedpy.q -q && cd ..
 
-    python -c "import sys;print(sys.version)"
-
-    python -c "print('/python'.join([__import__('sysconfig').get_config_var(v)for v in['BINDIR','VERSION']])+'.dll');print('');print(__import__('sys').prefix);"2>nul
-
-    conda list python
+    echo p)print('embedpy runs') | q -q
 
     pip install -r requirements.txt
-
-    echo p)print('embedpy runs') | q -q
 
     install.bat
 
