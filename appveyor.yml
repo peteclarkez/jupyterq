@@ -14,7 +14,7 @@ build_script:
 
     build\getkdb.bat
 
-    set PATH=C:\Miniconda3;C:\Miniconda3\Scripts;%PATH%
+    set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%PATH%
 
     mkdir embedpy && cd embedpy && echo getembedpy"latest" | q ..\build\getembedpy.q -q && cd ..
 
