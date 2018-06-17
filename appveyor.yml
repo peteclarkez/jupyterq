@@ -8,6 +8,7 @@ platform: x64
 build_script:
 - cmd: >-
 
+    echo APPVEYOR_PULL_REQUEST_NUMBER %APPVEYOR_PULL_REQUEST_NUMBER%
     build\compile.bat
 
     build\getkdb.bat
