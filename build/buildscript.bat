@@ -16,9 +16,11 @@ pip install -r requirements.txt || goto :error
 install.bat || goto :error
 
 :error
+@echo ON
 echo failed with error %errorLevel%
 exit /b %errorLevel%
 
 :nokdb
+@echo ON
 echo no kdb
 exit /b 0
