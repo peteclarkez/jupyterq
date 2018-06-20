@@ -1,9 +1,9 @@
 / jupyter kernel, no code or data lives here, communicates with a server proces but handles jupyter zeromq messaging
 \p 0W   / need for server process to connect
 \d .qpk
-
+/ implementation version, set in builds, defaults to `development
+version:@[{JUPYTERQVERSION};0;`development];
 / common variables
-version:@[{JUPYTERQVERSION};0;`development];           / implementation version, set in builds, defaults to `development
 opts:first each .Q.opt .z.x                            / command line args (kernel cmdline args)
 dlm:"<IDS|MSG>"                                        / delimitter between zmq identities and message content
 dd:(0#`)!()                                            / default dict
