@@ -8,4 +8,4 @@ if "%APPVEYOR_REPO_TAG%"=="true" (
 exit /b 0
 :version
 	set PATH=C:\Perl;%PATH%
-	perl -p -i.bak -e s/JUPYTERQVERSION/`%1/g jupyterq_kernel.q
+	perl -p -i.bak -e s/JUPYTERQVERSION/`"%1"/g jupyterq_kernel.q
