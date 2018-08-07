@@ -87,6 +87,7 @@ jobs:
         - export JUPYTERQ_VERSION=$TRAVIS_BRANCH
         - export JUPYTERQ_REQS=$(paste -sd "|" requirements.txt)
         - conda build conda-recipe --output -c kx > packagenames.txt
+        - conda render -c kx conda-recipe
         - conda build -c kx conda-recipe --no-long-test-prefix
       deploy:
         provider: script
