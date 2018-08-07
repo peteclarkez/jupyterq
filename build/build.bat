@@ -6,11 +6,8 @@ if "%APPVEYOR_REPO_TAG%"=="true" (
 ) else (
  set JUPYTERQ_VERSION=%APPVEYOR_REPO_BRANCH%-%APPVEYOR_REPO_COMMIT%
 )
-call :version %JUPYTERQ_VERSION
-
-:version
- set PATH=C:\Perl;%PATH%
- perl -p -i.bak -e s/JUPYTERQVERSION/`\$\"%1\"/g jupyterq_kernel.q
+set PATH=C:\Perl;%PATH%
+perl -p -i.bak -e s/JUPYTERQVERSION/`\$\"%JUPYTERQ_VERSION%\"/g jupyterq_kernel.q
 
 if not defined QLIC_KC (
  goto :nokdb

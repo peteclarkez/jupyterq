@@ -75,7 +75,7 @@ jobs:
           tags: true
           condition: $TRAVIS_BRANCH =~ ^[0-9]+\.
     - &conda_build
-      stage: deploy_target
+      stage: deploy target
       env:
         - TARGET=conda
       os:
