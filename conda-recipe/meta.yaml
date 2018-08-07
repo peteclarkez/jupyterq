@@ -1,0 +1,37 @@
+package:
+  name: jupyterq
+  version: {{ environ.get('JUPYTERQ_VERSION', 'noversion') }}
+
+source:
+  path: ..
+
+build:
+  detect_binary_files_with_prefix: False
+  script_env:
+    QLIC
+
+requirements:
+  build:
+    - m2w64-make                     [win]
+    - {{ compiler('c') }}
+  host:
+    - python
+    - kdb
+  run:
+    - python
+    - kdb
+    - embedpy
+     {% for package in environ.get('JUPYTERQ_REQS').split('\n') %}
+    - {{ package }}
+     {% endfor %}
+    
+test:
+  source_files:
+    - test.q
+    - tests/
+
+about:
+  home: https://github.com/KxSystems/jupyterq
+  license: Apache
+  license_file: LICENSE
+  summary: Jupyter kernel for kdb+
