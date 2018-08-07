@@ -21,7 +21,7 @@ requirements:
     - python
     - kdb
     - embedpy
-     {% for package in environ.get('JUPYTERQ_REQS').split('\n') %}
+     {% for package in environ.get('JUPYTERQ_REQS').split('|') %}
     - {{ package }}
      {% endfor %}
     
