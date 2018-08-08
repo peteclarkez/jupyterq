@@ -12,9 +12,9 @@ set /P JUPYTERQ_REQS=<reqs.txt
 if defined QLIC_KC ( echo|set /P=%QLIC_KC% > kc.lic.enc & certutil -decode kc.lic.enc kc.lic & set QLIC=%CD%)
 conda build --output conda-recipe > packagenames.txt                      || goto :error
 if defined QLIC_KC (
- conda build -c kx conda-recipe 
+ conda build -c kx conda-recipe                                           || goto :error
 ) else (
- conda build -c kx --no-test conda-recipe
+ conda build -c kx --no-test conda-recipe                                 || goto :error
 )
 set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%OP%
 exit /b 0
