@@ -4,7 +4,7 @@ call build\compile.bat                               || goto :error
 if "%APPVEYOR_REPO_TAG%"=="true" (
  set JUPYTERQ_VERSION=%APPVEYOR_REPO_TAG_NAME%
 ) else (
- set JUPYTERQ_VERSION=%APPVEYOR_REPO_BRANCH%-%APPVEYOR_REPO_COMMIT%
+ set JUPYTERQ_VERSION=%APPVEYOR_REPO_BRANCH%_%APPVEYOR_REPO_COMMIT%
 )
 set PATH=C:\Perl;%PATH%
 perl -p -i.bak -e s/JUPYTERQVERSION/`\$\"%JUPYTERQ_VERSION%\"/g jupyterq_kernel.q
