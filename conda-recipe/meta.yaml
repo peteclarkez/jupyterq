@@ -29,6 +29,7 @@ requirements:
 test:
   source_files:
     - tests/
+    - kdb+Notebooks.ipynb
 
 about:
   home: https://github.com/KxSystems/jupyterq

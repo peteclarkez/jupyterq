@@ -1,4 +1,3 @@
-set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%PATH%
 if defined QLIC_KC (
         pip -q install -r tests\requirements.txt
 	jupyter nbconvert --allow-errors --to notebook --execute --ExecutePreprocessor.timeout=60 --output tests/test.out kdb+Notebooks.ipynb
