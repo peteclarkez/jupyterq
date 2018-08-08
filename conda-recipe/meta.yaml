@@ -29,6 +29,7 @@ requirements:
 test:
   source_files:
     - tests/
+    - examples/
     - kdb+Notebooks.ipynb
 
 about:
