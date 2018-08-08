@@ -1,7 +1,7 @@
 set QHOME=%PREFIX%\q
 mkdir %QHOME%
-build\compile.bat
-install.bat
+call build\compile.bat
+call install.bat
 exit /b 0
 :error
 exit /b %errorlevel%
