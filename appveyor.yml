@@ -2,6 +2,8 @@ version: 1.0.{build}
 image:
 - Visual Studio 2017
 clone_depth: 1
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
 - path: jupyterq_windows-$(appveyor_repo_tag_name).zip
@@ -30,5 +32,8 @@ deploy:
  auth_token: $(GITHUB_APIKEY)
  on:
   appveyor_repo_tag: true
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
  
 
