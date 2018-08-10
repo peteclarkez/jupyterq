@@ -1,6 +1,6 @@
 {
  "argv": [
-  "cmd","/C"
+  "cmd","/C",
   "q",
   "jupyterq_kernel.q",
   "-cds",
