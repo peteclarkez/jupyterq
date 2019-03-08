@@ -16,17 +16,23 @@ To build the project locally you run:
 
 Once built, you should have a local `jupyterq` image, you can run the following to use it:
 
-On windows run either
 
-	docker run -it -p 8888:8888 -v %cd%:/jqnotebooks jupyterq
-	 
-	docker run -it -p 8888:8888 -v %cd%\examples:/jqnotebooks jupyterq
+	docker run -it -p 8888:8888 jupyterq
+
+
+The above command will populate the root folder `/jqnotebooks` with the example notebooks.
+
+If you wish to use your own notebooks you can use something along the lines of the following to set the volume.
+
+To mount the current folder On windows run 
+
+	docker run -it -p 8888:8888 -v %cd%:/jqnotebooks jupyterq 
 		
-On Mac / Linux	run either 
+On Mac / Linux	run  
 
 	docker run -it -p 8888:8888 -v $pwd:/jqnotebooks jupyterq
-		
-	docker run -it -p 8888:8888 -v $pwd/examples:/jqnotebooks jupyterq
+
+There is also a volume at `/jqdata` which can be used to mount data into the container.			
 		
 **N.B.** if you wish to use an alternative source for [embedPy](https://github.com/KxSystems/embedPy) then you can append `--build-arg embedpy_img=embedpy` to your argument list.
 

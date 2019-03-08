@@ -98,13 +98,20 @@ jupyter notebook kdb+Notebooks.ipynb
 
 If you have [Docker installed](https://www.docker.com/community-edition) you can alternatively run:
 
+	docker run -it --name myjupyterq -p 8888:8888  kxsys/jupyterq
 
-Linux/macOS
+Now point your browser at http://localhost:8888/notebooks/kdb%2BNotebooks.ipynb.
+
+The above command will populate the root folder `/jqnotebooks` with the example notebooks.
+
+If you wish to use your own notebooks you can use something along the lines of the following to set the volume.  
+
+To mount the current folder Linux/macOS run
 
     docker run -it \ 
       --name myjupyterq \
       -p 8888:8888 \
-      -v $pwd/examples:/jqnotebooks \
+      -v $pwd:/jqnotebooks \
       kxsys/jupyterq
 
 Windows
@@ -112,10 +119,10 @@ Windows
 	docker run -it ^
       --name myjupyterq ^
       -p 8888:8888 ^
-      -v %cd%\examples:/jqnotebooks ^
+      -v %cd%:/jqnotebooks ^
       kxsys/jupyterq
-		
-Now point your browser at http://localhost:8888/notebooks/kdb%2BNotebooks.ipynb.
+
+There is also a volume at `/jqdata` which can be used to mount data into the container.			
 
 For subsequent runs, you will not be prompted to redo the license setup when calling:
 
